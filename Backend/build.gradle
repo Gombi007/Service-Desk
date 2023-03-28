@@ -28,7 +28,7 @@ dependencies {
 }
 
 springBoot {
-    mainClass = 'com.gombino.mynotes.MyNotesApplication'
+    mainClass = 'com.gombisoft.servicedesk.ServiceDeskApplication'
 }
 
 tasks.named('test') {
