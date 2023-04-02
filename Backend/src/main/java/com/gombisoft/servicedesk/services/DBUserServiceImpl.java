@@ -52,7 +52,7 @@ public class DBUserServiceImpl implements DbUserService {
     @Override
     public AuthenticationResponseDTO authenticate(DbUserDTO userDTO) throws Exception {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userDTO.getUsername(), userDTO.getPassword()));
-        var user = dbUserRepository.findUserByUsername(userDTO.getUsername()).orElseThrow(()->new Exception("hello"));
+        var user = dbUserRepository.findUserByUsername(userDTO.getUsername()).orElseThrow(() -> new Exception("hello"));
         var jwtToken = jwtService.generateToken(user);
         return AuthenticationResponseDTO.builder()
                 .token(jwtToken)
