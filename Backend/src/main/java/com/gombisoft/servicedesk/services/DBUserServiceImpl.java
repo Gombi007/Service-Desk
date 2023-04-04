@@ -2,17 +2,21 @@ package com.gombisoft.servicedesk.services;
 
 import com.gombisoft.servicedesk.config.JwtService;
 import com.gombisoft.servicedesk.exceptions.BadRequestException;
+import com.gombisoft.servicedesk.exceptions.NoSuchElementException;
 import com.gombisoft.servicedesk.exceptions.ResourceAlreadyExistsException;
 import com.gombisoft.servicedesk.models.DBUser;
 import com.gombisoft.servicedesk.models.Role;
 import com.gombisoft.servicedesk.models.dtos.AuthenticationResponseDTO;
 import com.gombisoft.servicedesk.models.dtos.DBUserDTO;
 import com.gombisoft.servicedesk.repositories.DBUserRepository;
+import com.gombisoft.servicedesk.texts.ErrorMessage;
 import lombok.Builder;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,10 +26,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static com.gombisoft.servicedesk.config.ApplicationConfig.GLOBAL_ACTIVATED_LANGUAGE;
+
 @Service
 @RequiredArgsConstructor
 @Transactional
 @Builder
+@Slf4j
 public class DBUserServiceImpl implements DBUserService {
     private final DBUserRepository dbUserRepository;
     private final ModelMapper modelMapper;
@@ -41,11 +48,11 @@ public class DBUserServiceImpl implements DBUserService {
     @Override
     public AuthenticationResponseDTO registerUser(DBUserDTO userDto) {
         if (dbUserRepository.findUserByUsername(userDto.getUsername()).isPresent()) {
-            throw new ResourceAlreadyExistsException(String.format("This username: \"%s\" has already taken",userDto.getUsername()));
+            throw new ResourceAlreadyExistsException(ErrorMessage.USERNAME_TAKEN.getMessage(GLOBAL_ACTIVATED_LANGUAGE, userDto.getUsername()));
         }
 
         if (!usernameValidator(userDto.getUsername())) {
-            throw new BadRequestException(String.format("The username: \"%s\" must be a min 5 character length lowercase word without any whitespace or specific characters",userDto.getUsername()));
+            throw new BadRequestException(ErrorMessage.USERNAME_INVALID.getMessage(GLOBAL_ACTIVATED_LANGUAGE, userDto.getUsername()));
         }
 
         var user = DBUser.builder()
@@ -69,12 +76,15 @@ public class DBUserServiceImpl implements DBUserService {
     }
 
     @Override
-    public AuthenticationResponseDTO authenticate(DBUserDTO userDTO) throws Exception {
-        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userDTO.getUsername(), userDTO.getPassword()));
-        var user = dbUserRepository.findUserByUsername(userDTO.getUsername()).orElseThrow(() -> new Exception("hello"));
+    public AuthenticationResponseDTO authenticate(DBUserDTO userDTO) {
+        try {
+            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userDTO.getUsername(), userDTO.getPassword()));
+        } catch (AuthenticationException e) {
+            throw new NoSuchElementException(ErrorMessage.WRONG_USERNAME_OR_PASSWORD.getMessage(GLOBAL_ACTIVATED_LANGUAGE));
+        }
+
+        var user = dbUserRepository.findUserByUsername(userDTO.getUsername()).orElseThrow(() -> new NoSuchElementException(ErrorMessage.WRONG_USERNAME_OR_PASSWORD.getMessage(GLOBAL_ACTIVATED_LANGUAGE)));
         var jwtToken = jwtService.generateToken(user);
-
-
         return AuthenticationResponseDTO.builder()
                 .token(jwtToken)
                 .build();
