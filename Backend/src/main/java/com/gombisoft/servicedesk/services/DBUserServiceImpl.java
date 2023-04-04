@@ -29,7 +29,8 @@ public class DBUserServiceImpl implements DbUserService {
     private final AuthenticationManager authenticationManager;
 
     @Override
-    public List<DbUser> getUsers() {
+    public List<DbUser> getUsers()
+    {
         return dbUserRepository.findAll();
     }
 
@@ -54,6 +55,8 @@ public class DBUserServiceImpl implements DbUserService {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userDTO.getUsername(), userDTO.getPassword()));
         var user = dbUserRepository.findUserByUsername(userDTO.getUsername()).orElseThrow(() -> new Exception("hello"));
         var jwtToken = jwtService.generateToken(user);
+
+
         return AuthenticationResponseDTO.builder()
                 .token(jwtToken)
                 .build();
