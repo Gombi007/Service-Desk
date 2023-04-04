@@ -1,11 +1,11 @@
 package com.gombisoft.servicedesk.services;
 
 import com.gombisoft.servicedesk.config.JwtService;
-import com.gombisoft.servicedesk.models.DbUser;
+import com.gombisoft.servicedesk.models.DBUser;
 import com.gombisoft.servicedesk.models.Role;
 import com.gombisoft.servicedesk.models.dtos.AuthenticationResponseDTO;
-import com.gombisoft.servicedesk.models.dtos.DbUserDTO;
-import com.gombisoft.servicedesk.repositories.DbUserRepository;
+import com.gombisoft.servicedesk.models.dtos.DBUserDTO;
+import com.gombisoft.servicedesk.repositories.DBUserRepository;
 import lombok.Builder;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -15,32 +15,40 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Service
 @RequiredArgsConstructor
 @Transactional
 @Builder
-public class DBUserServiceImpl implements DbUserService {
-    private final DbUserRepository dbUserRepository;
+public class DBUserServiceImpl implements DBUserService {
+    private final DBUserRepository dbUserRepository;
     private final ModelMapper modelMapper;
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
 
     @Override
-    public List<DbUser> getUsers()
-    {
+    public List<DBUser> getUsers() {
         return dbUserRepository.findAll();
     }
 
     @Override
-    public AuthenticationResponseDTO registerUser(DbUserDTO userDto) {
-        var user = DbUser.builder()
+    public AuthenticationResponseDTO registerUser(DBUserDTO userDto) {
+        var user = DBUser.builder()
                 .username(userDto.getUsername())
+                .email(userDto.getEmail())
                 .password(passwordEncoder.encode(userDto.getPassword()))
-                .role(Role.USER)
+                .roles(Stream.of(Role.ROLE_USER).collect(Collectors.toCollection(HashSet::new)))
+                .isAccountNonExpired(true)
+                .isAccountNonLocked(true)
+                .isCredentialsNonExpired(true)
+                .isEnabled(true)
                 .build();
+
         if (user != null && !user.getUsername().equals("") && user.getPassword().length() >= 6) {
             dbUserRepository.save(user);
         }
@@ -51,7 +59,7 @@ public class DBUserServiceImpl implements DbUserService {
     }
 
     @Override
-    public AuthenticationResponseDTO authenticate(DbUserDTO userDTO) throws Exception {
+    public AuthenticationResponseDTO authenticate(DBUserDTO userDTO) throws Exception {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userDTO.getUsername(), userDTO.getPassword()));
         var user = dbUserRepository.findUserByUsername(userDTO.getUsername()).orElseThrow(() -> new Exception("hello"));
         var jwtToken = jwtService.generateToken(user);
@@ -63,7 +71,7 @@ public class DBUserServiceImpl implements DbUserService {
     }
 
     //converters
-    private DbUser convertToDbUser(DbUserDTO userDTO) {
-        return modelMapper.map(userDTO, DbUser.class);
+    private DBUser convertToDbUser(DBUserDTO userDTO) {
+        return modelMapper.map(userDTO, DBUser.class);
     }
 }

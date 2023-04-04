@@ -1,6 +1,6 @@
 package com.gombisoft.servicedesk.controllers;
 
-import com.gombisoft.servicedesk.services.DbUserService;
+import com.gombisoft.servicedesk.services.DBUserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -15,11 +15,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @Slf4j
 public class MainController {
-    private final DbUserService dbUserService;
+    private final DBUserService dbUserService;
 
-    @PreAuthorize("hasAuthority('USER')")
+    @PreAuthorize("hasRole('ROLE_USER')")
     @GetMapping()
     public ResponseEntity<Object> getUsers() {
+
         return ResponseEntity.status(HttpStatus.OK).body(dbUserService.getUsers());
     }
 }

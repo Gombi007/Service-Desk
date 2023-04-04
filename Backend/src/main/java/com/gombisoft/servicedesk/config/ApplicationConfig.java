@@ -1,6 +1,6 @@
 package com.gombisoft.servicedesk.config;
 
-import com.gombisoft.servicedesk.repositories.DbUserRepository;
+import com.gombisoft.servicedesk.repositories.DBUserRepository;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
@@ -18,7 +18,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @RequiredArgsConstructor
 public class ApplicationConfig {
 
-    private final DbUserRepository dbUserRepository;
+    private final DBUserRepository dbUserRepository;
 
     @Bean
     public ModelMapper modelMapper() {

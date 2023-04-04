@@ -1,6 +1,6 @@
 package com.gombisoft.servicedesk.repositories;
 
-import com.gombisoft.servicedesk.models.DbUser;
+import com.gombisoft.servicedesk.models.DBUser;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface DbUserRepository extends MongoRepository<DbUser, String> {
+public interface DBUserRepository extends MongoRepository<DBUser, String> {
     @Query("{username:'?0'}")
-    Optional<DbUser> findUserByUsername(String username);
+    Optional<DBUser> findUserByUsername(String username);
 }

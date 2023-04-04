@@ -9,7 +9,8 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class DbUserDTO {
+public class DBUserDTO {
     private String username;
+    private String email;
     private String password;
 }
