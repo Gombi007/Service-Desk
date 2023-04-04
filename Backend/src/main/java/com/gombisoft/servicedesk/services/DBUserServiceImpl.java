@@ -1,6 +1,8 @@
 package com.gombisoft.servicedesk.services;
 
 import com.gombisoft.servicedesk.config.JwtService;
+import com.gombisoft.servicedesk.exceptions.BadRequestException;
+import com.gombisoft.servicedesk.exceptions.ResourceAlreadyExistsException;
 import com.gombisoft.servicedesk.models.DBUser;
 import com.gombisoft.servicedesk.models.Role;
 import com.gombisoft.servicedesk.models.dtos.AuthenticationResponseDTO;
@@ -38,6 +40,14 @@ public class DBUserServiceImpl implements DBUserService {
 
     @Override
     public AuthenticationResponseDTO registerUser(DBUserDTO userDto) {
+        if (dbUserRepository.findUserByUsername(userDto.getUsername()).isPresent()) {
+            throw new ResourceAlreadyExistsException(String.format("This username: \"%s\" has already taken",userDto.getUsername()));
+        }
+
+        if (!usernameValidator(userDto.getUsername())) {
+            throw new BadRequestException(String.format("The username: \"%s\" must be a min 5 character length lowercase word without any whitespace or specific characters",userDto.getUsername()));
+        }
+
         var user = DBUser.builder()
                 .username(userDto.getUsername())
                 .email(userDto.getEmail())
@@ -68,6 +78,14 @@ public class DBUserServiceImpl implements DBUserService {
         return AuthenticationResponseDTO.builder()
                 .token(jwtToken)
                 .build();
+    }
+
+    private boolean usernameValidator(String username) {
+        //min 5 characters lowercase and it contains only numbers and letters and support hungarian chars
+        if (username.matches("^[\\p{Ll}0-9]{5,}$")) {
+            return true;
+        }
+        return false;
     }
 
     //converters
