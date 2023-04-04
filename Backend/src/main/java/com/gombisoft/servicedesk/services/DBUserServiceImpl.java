@@ -81,7 +81,7 @@ public class DBUserServiceImpl implements DBUserService {
     }
 
     private boolean usernameValidator(String username) {
-        //min 5 characters lowercase and it contains only numbers and letters and support hungarian chars
+        //min 5 characters lowercase, and it contains only numbers and letters and support hungarian chars
         if (username.matches("^[\\p{Ll}0-9]{5,}$")) {
             return true;
         }
