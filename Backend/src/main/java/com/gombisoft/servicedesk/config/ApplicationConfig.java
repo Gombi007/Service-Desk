@@ -17,6 +17,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 @RequiredArgsConstructor
 public class ApplicationConfig {
+    public static final String GLOBAL_ACTIVATED_LANGUAGE = "en";
 
     private final DBUserRepository dbUserRepository;
 
