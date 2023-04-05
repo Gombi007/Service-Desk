@@ -6,9 +6,11 @@ import com.gombisoft.servicedesk.exceptions.NoSuchElementException;
 import com.gombisoft.servicedesk.exceptions.ResourceAlreadyExistsException;
 import com.gombisoft.servicedesk.models.DBUser;
 import com.gombisoft.servicedesk.models.Role;
+import com.gombisoft.servicedesk.models.Session;
 import com.gombisoft.servicedesk.models.dtos.AuthenticationResponseDTO;
 import com.gombisoft.servicedesk.models.dtos.DBUserDTO;
 import com.gombisoft.servicedesk.repositories.DBUserRepository;
+import com.gombisoft.servicedesk.repositories.SessionRepository;
 import com.gombisoft.servicedesk.texts.ErrorMessage;
 import lombok.Builder;
 import lombok.RequiredArgsConstructor;
@@ -35,6 +37,7 @@ import static com.gombisoft.servicedesk.config.ApplicationConfig.GLOBAL_ACTIVATE
 @Slf4j
 public class DBUserServiceImpl implements DBUserService {
     private final DBUserRepository dbUserRepository;
+    private final SessionRepository sessionRepository;
     private final ModelMapper modelMapper;
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
@@ -70,9 +73,16 @@ public class DBUserServiceImpl implements DBUserService {
                 .isCredentialsNonExpired(true)
                 .isEnabled(true)
                 .build();
-        dbUserRepository.save(user);
 
+        user = dbUserRepository.save(user);
         var jwtToken = jwtService.generateToken(user);
+        var session = Session.builder()
+                .userId(user.getId())
+                .token(jwtToken)
+                .valid(jwtService.extractExpiration(jwtToken))
+                .isValidSession(true)
+                .build();
+        sessionRepository.save(session);
         return AuthenticationResponseDTO.builder()
                 .token(jwtToken)
                 .build();
@@ -88,6 +98,13 @@ public class DBUserServiceImpl implements DBUserService {
 
         var user = dbUserRepository.findUserByUsername(userDTO.getUsername()).orElseThrow(() -> new NoSuchElementException(ErrorMessage.WRONG_USERNAME_OR_PASSWORD.getMessage(GLOBAL_ACTIVATED_LANGUAGE)));
         var jwtToken = jwtService.generateToken(user);
+        var session = Session.builder()
+                .userId(user.getId())
+                .token(jwtToken)
+                .valid(jwtService.extractExpiration(jwtToken))
+                .isValidSession(true)
+                .build();
+        sessionRepository.save(session);
         return AuthenticationResponseDTO.builder()
                 .token(jwtToken)
                 .build();
