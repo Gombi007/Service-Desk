@@ -1,10 +1,13 @@
 package com.gombisoft.servicedesk.config;
 
+import com.gombisoft.servicedesk.repositories.SessionRepository;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
@@ -16,7 +19,10 @@ import java.util.Map;
 import java.util.function.Function;
 
 @Service
+@RequiredArgsConstructor
+@Slf4j
 public class JwtService {
+    private final SessionRepository sessionRepository;
 
     @Value("${SECRET_KEY}")
     private String SECRET_KEY;
@@ -46,14 +52,18 @@ public class JwtService {
 
     public boolean isTokenValid(String token, UserDetails userDetails) {
         final String username = extractUsername(token);
-        return (username.equals(userDetails.getUsername())) && !isTokenExpired(token);
+        boolean isValidSession = false;
+        if (sessionRepository.findByToken(token).isPresent()) {
+            isValidSession = sessionRepository.findByToken(token).get().isValidSession();
+        }
+        return username.equals(userDetails.getUsername()) && userDetails.isAccountNonExpired() && userDetails.isAccountNonLocked() && userDetails.isCredentialsNonExpired() && !isTokenExpired(token) && isValidSession;
     }
 
     private boolean isTokenExpired(String token) {
         return extractExpiration(token).before(new Date());
     }
 
-    private Date extractExpiration(String token) {
+    public Date extractExpiration(String token) {
         return extractClaim(token, Claims::getExpiration);
     }
 
