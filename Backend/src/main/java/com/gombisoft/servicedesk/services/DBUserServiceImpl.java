@@ -47,12 +47,17 @@ public class DBUserServiceImpl implements DBUserService {
 
     @Override
     public AuthenticationResponseDTO registerUser(DBUserDTO userDto) {
+
         if (dbUserRepository.findUserByUsername(userDto.getUsername()).isPresent()) {
             throw new ResourceAlreadyExistsException(ErrorMessage.USERNAME_TAKEN.getMessage(GLOBAL_ACTIVATED_LANGUAGE, userDto.getUsername()));
         }
 
         if (!usernameValidator(userDto.getUsername())) {
             throw new BadRequestException(ErrorMessage.USERNAME_INVALID.getMessage(GLOBAL_ACTIVATED_LANGUAGE, userDto.getUsername()));
+        }
+
+        if (!passwordValidator(userDto.getPassword())) {
+            throw new BadRequestException(ErrorMessage.PASSWORD_INVALID.getMessage(GLOBAL_ACTIVATED_LANGUAGE));
         }
 
         var user = DBUser.builder()
@@ -65,10 +70,8 @@ public class DBUserServiceImpl implements DBUserService {
                 .isCredentialsNonExpired(true)
                 .isEnabled(true)
                 .build();
+        dbUserRepository.save(user);
 
-        if (user != null && !user.getUsername().equals("") && user.getPassword().length() >= 6) {
-            dbUserRepository.save(user);
-        }
         var jwtToken = jwtService.generateToken(user);
         return AuthenticationResponseDTO.builder()
                 .token(jwtToken)
@@ -92,10 +95,12 @@ public class DBUserServiceImpl implements DBUserService {
 
     private boolean usernameValidator(String username) {
         //min 5 characters lowercase, and it contains only numbers and letters and support hungarian chars
-        if (username.matches("^[\\p{Ll}0-9]{5,}$")) {
-            return true;
-        }
-        return false;
+        return username.matches("^[\\p{Ll}0-9]{5,}$");
+    }
+
+    private boolean passwordValidator(String password) {
+        //password must be a minimum 6 characters long word without any whitespace
+        return password.matches("^(?=.*[a-zA-Z0-9])[a-zA-Z0-9!@#$%^&*()-_=+\\\\|\\\\[{\\\\]};:'\",.<>/?]{6,}$");
     }
 
     //converters
