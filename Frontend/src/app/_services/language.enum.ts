@@ -7,6 +7,7 @@ export enum LanguageText {
     Btn_Login_Text = 'You already have an account?',
     Btn_Register = 'Register',
     Btn_Register_Text = 'You don\'t have an account yet?',
+    Error_Notification_Login = 'Username or Password issue, please login again',
 }
 
 export const LANG_EN: { [key in keyof typeof LanguageText]: string } = {
@@ -18,6 +19,7 @@ export const LANG_EN: { [key in keyof typeof LanguageText]: string } = {
     Btn_Login_Text: 'You already have an account?',
     Btn_Register: 'Register',
     Btn_Register_Text: 'You don\'t have an account yet?',
+    Error_Notification_Login: 'Username or Password issue, please login again',
 };
 
 export const LANG_HU: { [key in keyof typeof LanguageText]: string } = {
@@ -29,4 +31,5 @@ export const LANG_HU: { [key in keyof typeof LanguageText]: string } = {
     Btn_Login_Text: 'Már rigsztráltál?',
     Btn_Register: 'Regisztráció',
     Btn_Register_Text: 'Még nincs fiókod?',
+    Error_Notification_Login: 'Felhasználónév vagy jelszó hiba, kérlek jelentkezz be újra',
 };

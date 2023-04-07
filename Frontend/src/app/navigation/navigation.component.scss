@@ -1,0 +1,31 @@
+.container {
+    height: 5vh;
+    background: var(--primary-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 0 3px 3px var(--primary-color-hint);
+
+}
+
+.left-side {
+    margin-left: 1rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.right-side {
+    margin-right: 1rem;
+    display: flex;
+    gap: 1rem;
+}
+
+a {
+    color: var(--secondary-color);
+    border-bottom: 2px solid transparent;
+    font-size: larger;
+}
+
+a:hover {
+    border-bottom: 2px solid var(--secondary-color);
+}
