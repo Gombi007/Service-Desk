@@ -1,4 +1,4 @@
-.conatiner {
+.container {
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -9,7 +9,7 @@
 
 .form {
     width: max-content;
-    background-color: rgb(27, 34, 34);
+    background: var(--primary-color);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -17,7 +17,7 @@
     gap: 1rem;
     padding: 1rem 3rem;
     border-radius: 1rem;
-    box-shadow: 0 0 5px 3px black;
+    box-shadow: 0 0 5px 3px var(--primary-color-hint);
 
 }
 
@@ -31,19 +31,6 @@
     font-size: 1.2rem;
 }
 
-input {
-    border-radius: 0.3rem;
-    font-size: large;
-    border: none;
-    background-color: rgb(84, 97, 99);
-    color: white;
-
-}
-
-input:focus {
-    border: none;
-    outline: 2px solid rgb(84, 157, 199);
-}
 
 .change-login-or-register {
     display: flex;

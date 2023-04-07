@@ -1,4 +1,4 @@
-<div class="conatiner">
+<div class="container">
     <div class="language-selector">
         <img src="assets/Pictures/flag-english.png" alt="flag_english" (click)="setLanguage('en')">
         <img src="assets/Pictures/flag-hungary.png" alt="flag_hungary" (click)="setLanguage('hu')">
@@ -50,5 +50,6 @@
             <button class="btn" type="button" (click)="startRegister()">{{lang['Btn_Register']}}</button>
         </div>
     </form>
+    <img class="pending" src="assets/Pictures/spinner.gif" alt="loading..." *ngIf="isPending">
     <div appNotification [notification$]="notification$"></div>
 </div>

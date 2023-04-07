@@ -1,7 +1,9 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { LANG_EN, LANG_HU } from '../../language.enum';
-import { LanguageService } from 'src/app/services/language.service';
+import { LANG_EN, LANG_HU } from 'src/app/_services/language.enum';
+import { LanguageService } from 'src/app/_services/language.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthenticateService } from 'src/app/_services/authenticate.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -15,8 +17,11 @@ export class LoginComponent {
   lang: { [key: string]: string } = LANG_EN;
   loginForm!: FormGroup;
   registrationForm!: FormGroup;
+  isPending: boolean = false;
 
-  constructor(private languageService: LanguageService) { }
+  constructor(private languageService: LanguageService, private authService: AuthenticateService, private router: Router, private route: ActivatedRoute) {
+    sessionStorage.clear();
+  }
 
   ngOnInit() {
     this.updateLanguage();
@@ -54,8 +59,22 @@ export class LoginComponent {
   }
 
   startLogin() {
-    console.log(this.loginForm);
-    this.notification$.emit({ text: 'Hello', isError: false });
+    if (this.loginForm.valid) {
+      this.isPending = true;
+      this.authService.loginViaBackend(this.loginForm.value).subscribe({
+        next: (data: { token: string, userId: string }) => {
+          sessionStorage.setItem('userId', data.userId);
+          sessionStorage.setItem('token', data.token);
+          this.loginForm.reset();
+          this.isPending = false;
+          this.router.navigate(['show-tickets']);
+        },
+        error: (err) => {
+          this.notification$.emit({ text: this.lang['Error_Notification_Login'], isError: true });
+          this.isPending = false;
+        },
+      });
+    }
 
   }
 
