@@ -1,16 +1,50 @@
 <div class="conatiner">
-    <form class="form">
+    <form class="form" *ngIf="showLoginForm">
         <div class="username">
-            <label for="username">Username:</label>
+            <label for="username">{{lang['Login_Username']}}:</label>
             <input type="text" id="username" name="username">
         </div>
         <div class="password">
-            <label for="password">Password:</label>
+            <label for="password">{{lang['Login_Password']}}:</label>
             <input type="password" id="password" name="password">
+        </div>
+
+        <div class="change-login-or-register">
+            <p>{{lang['Btn_Register_Text']}}</p>
+            <a (click)="changeForm()">{{lang['Btn_Register']}}</a>
         </div>
 
         <div class="btn-area">
             <button class="btn" type="button">Login</button>
+        </div>
+    </form>
+
+    <form class="form" *ngIf="!showLoginForm">
+        <div class="username">
+            <label for="username">{{lang['Login_Username']}}:</label>
+            <input type="text" id="username" name="username">
+        </div>
+        <div class="email">
+            <label for="email">{{lang['Login_Email']}}:</label>
+            <input type="email" id="email" name="email">
+        </div>
+        <div class="password">
+            <label for="password">{{lang['Login_Password']}}:</label>
+            <input type="password" id="password" name="password">
+        </div>
+        <div class="password">
+            <label for="RePassword">{{lang['Login_Confirm_Password']}}:</label>
+            <input type="password" id="RePassword" name="RePassword">
+        </div>
+
+        <div class="change-login-or-register">
+            <p>{{lang['Btn_Login_Text']}}</p>
+            <a (click)="changeForm()">{{lang['Btn_Login']}}</a>
+        </div>
+
+        <div class="btn-area">
+            <button class="btn" type="button" *ngIf="showLoginForm">{{lang['Btn_Login']}}</button>
+            <button class="btn" type="button" *ngIf="!showLoginForm">{{lang['Btn_Register']}}</button>
         </div>
     </form>
 </div>

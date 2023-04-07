@@ -18,11 +18,13 @@ body {
 body {
     color: var(--secondary-color);
     background: var(--backgound-color);
+    font-family: 'Courier';
 }
 
 a {
-    color: var(--primary-color);
+    color: magenta;
     text-decoration: none;
+    cursor: pointer;
 }
 
 .btn {
@@ -34,11 +36,13 @@ a {
     font-family: 'Anuphan';
     font-weight: 400;
     cursor: pointer;
-    box-shadow: 0 0 2px 1px black;
     font-size: large;
 }
 
 .btn:hover {
     background-color: #0b6994;
-    box-shadow: 0 0 2px 1px rgb(243, 250, 185);
+}
+
+p {
+    cursor: default;
 }

@@ -3,19 +3,31 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 1rem;
 }
 
 .form {
-    width: 23rem;
+    width: max-content;
     background-color: rgb(27, 34, 34);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 1rem;
-    padding: 1rem;
+    padding: 1rem 3rem;
     border-radius: 1rem;
     box-shadow: 0 0 5px 3px black;
+
+}
+
+.username,
+.password,
+.email {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 1.2rem;
 }
 
 input {
@@ -32,10 +44,9 @@ input:focus {
     outline: 2px solid rgb(84, 157, 199);
 }
 
-.username,
-.password {
-    width: 20rem;
+.change-login-or-register {
     display: flex;
-    justify-content: space-between;
-    font-size: large;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
 }
