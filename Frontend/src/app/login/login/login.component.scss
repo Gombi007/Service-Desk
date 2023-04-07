@@ -1,6 +1,7 @@
 .conatiner {
     height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 1rem;
@@ -49,4 +50,14 @@ input:focus {
     justify-content: center;
     align-items: center;
     gap: 0.5rem;
+}
+
+.language-selector {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.language-selector img {
+    cursor: pointer;
 }

@@ -1,4 +1,8 @@
 <div class="conatiner">
+    <div class="language-selector">
+        <img src="assets/Pictures/flag-english.png" alt="flag_english" (click)="setLanguage('en')">
+        <img src="assets/Pictures/flag-hungary.png" alt="flag_hungary" (click)="setLanguage('hu')">
+    </div>
     <form class="form" *ngIf="showLoginForm">
         <div class="username">
             <label for="username">{{lang['Login_Username']}}:</label>
@@ -15,7 +19,7 @@
         </div>
 
         <div class="btn-area">
-            <button class="btn" type="button">Login</button>
+            <button class="btn" type="button">{{lang['Btn_Login']}}</button>
         </div>
     </form>
 
@@ -43,8 +47,7 @@
         </div>
 
         <div class="btn-area">
-            <button class="btn" type="button" *ngIf="showLoginForm">{{lang['Btn_Login']}}</button>
-            <button class="btn" type="button" *ngIf="!showLoginForm">{{lang['Btn_Register']}}</button>
+            <button class="btn" type="button">{{lang['Btn_Register']}}</button>
         </div>
     </form>
 </div>
