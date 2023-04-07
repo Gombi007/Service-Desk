@@ -1,0 +1,41 @@
+.conatiner {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form {
+    width: 23rem;
+    background-color: rgb(27, 34, 34);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 5px 3px black;
+}
+
+input {
+    border-radius: 0.3rem;
+    font-size: large;
+    border: none;
+    background-color: rgb(84, 97, 99);
+    color: white;
+
+}
+
+input:focus {
+    border: none;
+    outline: 2px solid rgb(84, 157, 199);
+}
+
+.username,
+.password {
+    width: 20rem;
+    display: flex;
+    justify-content: space-between;
+    font-size: large;
+}

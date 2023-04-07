@@ -1,3 +1,44 @@
-html {
-    color: white;
+@font-face {
+    font-family: 'Anuphan';
+    src: url('./assets/Fonts/Anuphan/Anuphan-VariableFont_wght.ttf');
+}
+
+:root {
+    --backgound-color: linear-gradient(to bottom, #2b88a5, #2446a3, #096075);
+    --primary-color: #2b537e;
+    --secondary-color: #ffffff;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    color: var(--secondary-color);
+    background: var(--backgound-color);
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.btn {
+    border-radius: 0.7rem;
+    background-color: #074764;
+    border: none;
+    color: #ffffff;
+    padding: 0.2rem 0.6rem;
+    font-family: 'Anuphan';
+    font-weight: 400;
+    cursor: pointer;
+    box-shadow: 0 0 2px 1px black;
+    font-size: large;
+}
+
+.btn:hover {
+    background-color: #0b6994;
+    box-shadow: 0 0 2px 1px rgb(243, 250, 185);
 }
