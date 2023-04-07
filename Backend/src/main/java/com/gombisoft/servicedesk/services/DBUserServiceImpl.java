@@ -85,6 +85,7 @@ public class DBUserServiceImpl implements DBUserService {
         sessionRepository.save(session);
         return AuthenticationResponseDTO.builder()
                 .token(jwtToken)
+                .userId(user.getId())
                 .build();
     }
 
@@ -107,6 +108,7 @@ public class DBUserServiceImpl implements DBUserService {
         sessionRepository.save(session);
         return AuthenticationResponseDTO.builder()
                 .token(jwtToken)
+                .userId(user.getId())
                 .build();
     }
 
