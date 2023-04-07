@@ -65,6 +65,14 @@ export class LoginComponent {
         next: (data: { token: string, userId: string }) => {
           sessionStorage.setItem('userId', data.userId);
           sessionStorage.setItem('token', data.token);
+
+          let loggedUsernames: string = localStorage.getItem('usernames') ?? '';
+          if (!loggedUsernames.includes(this.loginForm.get('username')?.value)) {
+            loggedUsernames += this.loginForm.get('username')?.value ?? '';
+            loggedUsernames += ';';
+            localStorage.setItem('usernames', loggedUsernames)
+          }
+
           this.loginForm.reset();
           this.isPending = false;
           this.router.navigate(['show-tickets']);
@@ -75,7 +83,15 @@ export class LoginComponent {
         },
       });
     }
+  }
 
+  setPlaceholderUsersFromLocalstorage() {
+    let loggedUsernames: string = localStorage.getItem('usernames') ?? '';
+    let nameList: string[] = [];
+    if (loggedUsernames.length > 0) {
+      nameList = loggedUsernames.split(';');
+    }
+    return nameList;
   }
 
   startRegister() {

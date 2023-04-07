@@ -3,10 +3,16 @@
         <img src="assets/Pictures/flag-english.png" alt="flag_english" (click)="setLanguage('en')">
         <img src="assets/Pictures/flag-hungary.png" alt="flag_hungary" (click)="setLanguage('hu')">
     </div>
+
+    <datalist id="usernames">
+        <option *ngFor="let option of setPlaceholderUsersFromLocalstorage()" [value]="option">{{option}}
+        </option>
+    </datalist>
+
     <form [formGroup]="loginForm" class="form" *ngIf="showLoginForm">
         <div class="username">
             <label for="username">{{lang['Login_Username']}}:</label>
-            <input type="text" id="username" name="username" formControlName="username">
+            <input type="text" id="username" name="username" formControlName="username" list="usernames">
         </div>
         <div class="password">
             <label for="password">{{lang['Login_Password']}}:</label>
