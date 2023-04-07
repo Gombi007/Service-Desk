@@ -5,8 +5,12 @@
 
 :root {
     --backgound-color: linear-gradient(to bottom, #2b88a5, #2446a3, #096075);
-    --primary-color: #2b537e;
+    --primary-color: linear-gradient(to bottom, #0d485e, rgb(9, 43, 94));
+    --primary-color-hint: rgb(2, 20, 70);
     --secondary-color: #ffffff;
+    --input-color: rgb(0, 24, 54);
+    --btn-color-default: linear-gradient(to bottom, #098ab9, rgb(7, 79, 187));
+    --btn-color-hover: linear-gradient(to bottom, #860e9e, rgb(7, 79, 187));
 }
 
 html,
@@ -29,9 +33,9 @@ a {
 
 .btn {
     border-radius: 0.7rem;
-    background-color: #074764;
+    background: var(--btn-color-default);
     border: none;
-    color: #ffffff;
+    color: var(--secondary-color);
     padding: 0.2rem 0.6rem;
     font-family: 'Anuphan';
     font-weight: 400;
@@ -40,11 +44,24 @@ a {
 }
 
 .btn:hover {
-    background-color: #0b6994;
+    background: var(--btn-color-hover);
 }
 
 p {
     cursor: default;
+}
+
+input {
+    border-radius: 0.3rem;
+    font-size: large;
+    border: none;
+    background-color: var(--input-color);
+    color: var(--secondary-color);
+}
+
+input:focus {
+    border: none;
+    outline: 2px solid rgb(84, 157, 199);
 }
 
 .notification-ok {
@@ -65,6 +82,16 @@ p {
     bottom: 0;
     left: 0;
     right: 0;
+    padding: 0.5rem;
+    position: fixed;
+}
+
+.pending {
+    width: 50px;
+    height: 50px;
+    bottom: 4rem;
+    left: 50;
+    right: 50;
     padding: 0.5rem;
     position: fixed;
 }
