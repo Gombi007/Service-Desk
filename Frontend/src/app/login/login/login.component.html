@@ -3,14 +3,14 @@
         <img src="assets/Pictures/flag-english.png" alt="flag_english" (click)="setLanguage('en')">
         <img src="assets/Pictures/flag-hungary.png" alt="flag_hungary" (click)="setLanguage('hu')">
     </div>
-    <form class="form" *ngIf="showLoginForm">
+    <form [formGroup]="loginForm" class="form" *ngIf="showLoginForm">
         <div class="username">
             <label for="username">{{lang['Login_Username']}}:</label>
-            <input type="text" id="username" name="username">
+            <input type="text" id="username" name="username" formControlName="username">
         </div>
         <div class="password">
             <label for="password">{{lang['Login_Password']}}:</label>
-            <input type="password" id="password" name="password">
+            <input type="password" id="password" name="password" formControlName="password">
         </div>
 
         <div class="change-login-or-register">
@@ -19,26 +19,26 @@
         </div>
 
         <div class="btn-area">
-            <button class="btn" type="button">{{lang['Btn_Login']}}</button>
+            <button class="btn" type="button" (click)="startLogin()">{{lang['Btn_Login']}}</button>
         </div>
     </form>
 
-    <form class="form" *ngIf="!showLoginForm">
+    <form [formGroup]="registrationForm" class="form" *ngIf="!showLoginForm">
         <div class="username">
             <label for="username">{{lang['Login_Username']}}:</label>
-            <input type="text" id="username" name="username">
+            <input type="text" id="username" name="username" formControlName="username">
         </div>
         <div class="email">
             <label for="email">{{lang['Login_Email']}}:</label>
-            <input type="email" id="email" name="email">
+            <input type="email" id="email" name="email" formControlName="email">
         </div>
         <div class="password">
             <label for="password">{{lang['Login_Password']}}:</label>
-            <input type="password" id="password" name="password">
+            <input type="password" id="password" name="password" formControlName="password">
         </div>
         <div class="password">
-            <label for="RePassword">{{lang['Login_Confirm_Password']}}:</label>
-            <input type="password" id="RePassword" name="RePassword">
+            <label for="confirmPassword">{{lang['Login_Confirm_Password']}}:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" formControlName="confirmPassword">
         </div>
 
         <div class="change-login-or-register">
@@ -47,7 +47,8 @@
         </div>
 
         <div class="btn-area">
-            <button class="btn" type="button">{{lang['Btn_Register']}}</button>
+            <button class="btn" type="button" (click)="startRegister()">{{lang['Btn_Register']}}</button>
         </div>
     </form>
+    <div appNotification [notification$]="notification$"></div>
 </div>
