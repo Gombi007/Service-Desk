@@ -8,6 +8,7 @@ const createWindow = () => {
     });
 
     win.loadFile(`${__dirname}/dist/service-desk/index.html`);
+    win.removeMenu();
 };
 
 //win.webContents.openDevTools()
