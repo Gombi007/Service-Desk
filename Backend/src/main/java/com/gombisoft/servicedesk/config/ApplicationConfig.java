@@ -26,6 +26,10 @@ public class ApplicationConfig {
 
     @Value("${SERVER_CORS_PERMISSION_1}")
     private String cors1;
+    @Value("${SERVER_CORS_PERMISSION_2}")
+    private String cors2;
+    @Value("${SERVER_CORS_PERMISSION_1}")
+    private String cors3;
 
     @Bean
     public ModelMapper modelMapper() {
@@ -60,7 +64,7 @@ public class ApplicationConfig {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**").allowedOrigins(cors1).allowedMethods("GET", "POST", "PUT", "DELETE");
+                registry.addMapping("/**").allowedOrigins(cors1, cors2, cors3).allowedMethods("GET", "POST", "PUT", "DELETE");
             }
         };
     }
