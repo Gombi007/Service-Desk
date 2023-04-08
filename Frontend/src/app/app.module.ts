@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NavigationComponent } from './navigation/navigation.component';
 import { ShowTicketsComponent } from './tickets/show-tickets/show-tickets.component';
 import { CreateTicketsComponent } from './tickets/create-tickets/create-tickets.component';
+import { PendingComponent } from './pending/pending.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { CreateTicketsComponent } from './tickets/create-tickets/create-tickets.
     NavigationComponent,
     ShowTicketsComponent,
     CreateTicketsComponent,
+    PendingComponent,
   ],
   imports: [
     BrowserModule,

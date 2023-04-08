@@ -14,7 +14,7 @@ export class LoginComponent {
   @Output()
   notification$ = new EventEmitter<{ text: string, isError: boolean }>();
   showLoginForm: boolean = true;
-  lang: { [key: string]: string } = LANG_EN;
+  lang: { [key: string]: string } = this.languageService.getLanguage;
   loginForm!: FormGroup;
   registrationForm!: FormGroup;
   isPending: boolean = false;
@@ -24,18 +24,13 @@ export class LoginComponent {
   }
 
   ngOnInit() {
-    this.updateLanguage();
     this.createLoginForm();
     this.createRegistrationForm();
   }
 
   setLanguage(lang: string) {
     this.languageService.setLanguage(lang);
-    this.updateLanguage();
-  }
-
-  updateLanguage() {
-    this.lang = this.languageService.currentLanguage === 'en' ? LANG_EN : LANG_HU;
+    this.lang = this.languageService.getLanguage;
   }
 
   changeForm() {
