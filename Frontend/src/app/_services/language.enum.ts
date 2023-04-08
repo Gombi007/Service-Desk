@@ -11,6 +11,7 @@ export enum LanguageText {
     Menu_Works = 'WORKS',
     Menu_Create = 'CREATE',
     Menu_Logout = 'LOGOUT',
+    Success_Login = 'The login process was successful',
 }
 
 export const LANG_EN: { [key in keyof typeof LanguageText]: string } = {
@@ -26,6 +27,7 @@ export const LANG_EN: { [key in keyof typeof LanguageText]: string } = {
     Menu_Works: 'WORKS',
     Menu_Create: 'CREATE',
     Menu_Logout: 'LOGOUT',
+    Success_Login: 'The login process was successful',
 };
 
 export const LANG_HU: { [key in keyof typeof LanguageText]: string } = {
@@ -41,4 +43,5 @@ export const LANG_HU: { [key in keyof typeof LanguageText]: string } = {
     Menu_Works: 'MUNKÁK',
     Menu_Create: 'LÉTREHOZÁS',
     Menu_Logout: 'KILÉPÉS',
+    Success_Login: 'A bejelentkezési folyamat sikeres volt',
 };

@@ -60,14 +60,7 @@ export class LoginComponent {
         next: (data: { token: string, userId: string }) => {
           sessionStorage.setItem('userId', data.userId);
           sessionStorage.setItem('token', data.token);
-
-          let loggedUsernames: string = localStorage.getItem('usernames') ?? '';
-          if (!loggedUsernames.includes(this.loginForm.get('username')?.value)) {
-            loggedUsernames += this.loginForm.get('username')?.value ?? '';
-            loggedUsernames += ';';
-            localStorage.setItem('usernames', loggedUsernames)
-          }
-
+          this.saveLoggedUsersnameInLocalStorage();
           this.loginForm.reset();
           this.isPending = false;
           this.router.navigate(['show-tickets']);
@@ -77,6 +70,15 @@ export class LoginComponent {
           this.isPending = false;
         },
       });
+    }
+  }
+
+  saveLoggedUsersnameInLocalStorage() {
+    let loggedUsernames: string = localStorage.getItem('usernames') ?? '';
+    if (!loggedUsernames.includes(this.loginForm.get('username')?.value)) {
+      loggedUsernames += this.loginForm.get('username')?.value ?? '';
+      loggedUsernames += ';';
+      localStorage.setItem('usernames', loggedUsernames)
     }
   }
 
