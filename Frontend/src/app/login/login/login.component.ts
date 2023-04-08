@@ -39,17 +39,19 @@ export class LoginComponent {
 
   createLoginForm() {
     return this.loginForm = new FormGroup({
-      'username': new FormControl(null, [Validators.required, Validators.minLength(5)]),
-      'password': new FormControl(null, [Validators.required, Validators.minLength(6)]),
+      //min 5 char length and allowed only lowercase letters and digits in any languages, no whitespace, no special chars, no uppercase
+      'username': new FormControl(null, [Validators.required, Validators.pattern(/^[\p{Ll}0-9]{5,}$/u)]),
+      // min 6 length char and allowed upper and lowercase letters and digits and special chars in any language, no whitespace
+      'password': new FormControl(null, [Validators.required, Validators.pattern(/^[a-zA-Z0-9\p{L}\p{M}!@#$%^&*()_+\-=[\]{};':"\\|,.<>\/?]{6,}$/u)])
     });
   }
 
   createRegistrationForm() {
     return this.registrationForm = new FormGroup({
-      'username': new FormControl(null, [Validators.required, Validators.minLength(5)]),
+      'username': new FormControl(null, [Validators.required, Validators.pattern(/^[\p{Ll}0-9]{5,}$/u)]),
       'email': new FormControl(null, [Validators.email]),
-      'password': new FormControl(null, [Validators.required, Validators.minLength(6)]),
-      'confirmPassword': new FormControl(null, [Validators.required, Validators.minLength(6)])
+      'password': new FormControl(null, [Validators.required, Validators.pattern(/^[a-zA-Z0-9\p{L}\p{M}!@#$%^&*()_+\-=[\]{};':"\\|,.<>\/?]{6,}$/u)]),
+      'confirmPassword': new FormControl(null, [Validators.required, Validators.pattern(/^[a-zA-Z0-9\p{L}\p{M}!@#$%^&*()_+\-=[\]{};':"\\|,.<>\/?]{6,}$/u)])
     });
   }
 
@@ -92,7 +94,19 @@ export class LoginComponent {
   }
 
   startRegister() {
-    console.log(this.registrationForm);
+    if (this.registrationForm.valid) {
+
+    }
   }
 
+  checkValidField(fieldName: string) {
+    return this.registrationForm.controls[fieldName].invalid
+      && this.registrationForm.controls[fieldName].dirty
+      && this.registrationForm.controls[fieldName].value
+  }
+
+  checkSamePassword() {
+    return this.registrationForm.controls['password'].value
+      === this.registrationForm.controls['confirmPassword'].value
+  }
 }

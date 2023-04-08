@@ -8,7 +8,8 @@
 }
 
 .form {
-    width: max-content;
+    width: 400px;
+    margin: 0.3rem;
     background: var(--primary-color);
     display: flex;
     flex-direction: column;
@@ -18,7 +19,6 @@
     padding: 1rem 3rem;
     border-radius: 1rem;
     box-shadow: 0 0 5px 3px var(--primary-color-hint);
-
 }
 
 .username,
@@ -47,4 +47,21 @@
 
 .language-selector img {
     cursor: pointer;
+}
+
+.requirements {
+    margin: 0.1rem;
+    margin-left: 0.3rem;
+    font-size: small;
+    font-weight: 500;
+    color: var(--suggestion-color);
+}
+
+.check-icon {
+    margin-left: 0.5rem;
+    width: 20px;
+    height: 20px;
+    background-color: var(--success-color);
+    -webkit-mask: url('/assets/Pictures/check.svg') no-repeat center;
+    mask: url('/assets/Pictures/check.svg') no-repeat center;
 }

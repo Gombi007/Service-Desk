@@ -33,18 +33,34 @@
         <div class="username">
             <label for="username">{{lang['Login_Username']}}:</label>
             <input type="text" id="username" name="username" formControlName="username">
+            <p class="requirements" *ngIf="checkValidField('username')">
+                {{lang['Requirements_Username']}}</p>
+            <div class="check-icon" *ngIf="registrationForm.controls['username'].valid"></div>
         </div>
+
         <div class="email">
             <label for="email">{{lang['Login_Email']}}:</label>
             <input type="email" id="email" name="email" formControlName="email">
+            <p class="requirements" *ngIf="checkValidField('email')">
+                {{lang['Requirements_Email']}}</p>
+            <div class="check-icon" *ngIf="registrationForm.controls['email'].valid"></div>
         </div>
+
         <div class="password">
             <label for="password">{{lang['Login_Password']}}:</label>
             <input type="password" id="password" name="password" formControlName="password">
+            <p class="requirements" *ngIf="checkValidField('password')">
+                {{lang['Requirements_Password']}}</p>
+            <div class="check-icon" *ngIf="registrationForm.controls['password'].valid"></div>
         </div>
+
         <div class="password">
             <label for="confirmPassword">{{lang['Login_Confirm_Password']}}:</label>
             <input type="password" id="confirmPassword" name="confirmPassword" formControlName="confirmPassword">
+            <p class="requirements" *ngIf="!checkSamePassword()">
+                {{lang['Requirements_Confirm_Password']}}</p>
+            <div class="check-icon" *ngIf="registrationForm.controls['confirmPassword'].valid && checkSamePassword()">
+            </div>
         </div>
 
         <div class="change-login-or-register">

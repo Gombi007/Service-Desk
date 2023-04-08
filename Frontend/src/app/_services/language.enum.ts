@@ -12,6 +12,10 @@ export enum LanguageText {
     Menu_Create = 'CREATE',
     Menu_Logout = 'LOGOUT',
     Success_Login = 'The login process was successful',
+    Requirements_Username = 'Min 5 char length and contains only lowercase letters and digits, whitespace not allowed',
+    Requirements_Password = 'Min 6 char length and contains only lower or uppercase letters and digits and special chars, whitespace not allowed',
+    Requirements_Email = 'Please give a valid email format',
+    Requirements_Confirm_Password = 'The two passwords are different',
 }
 
 export const LANG_EN: { [key in keyof typeof LanguageText]: string } = {
@@ -28,6 +32,10 @@ export const LANG_EN: { [key in keyof typeof LanguageText]: string } = {
     Menu_Create: 'CREATE',
     Menu_Logout: 'LOGOUT',
     Success_Login: 'The login process was successful',
+    Requirements_Username: 'Min 5 char length and contains only lowercase letters and digits, whitespace not allowed',
+    Requirements_Password: 'Min 6 char length and contains only lower or uppercase letters and digits and special chars, whitespace not allowed',
+    Requirements_Email: 'Please give a valid email format',
+    Requirements_Confirm_Password: 'The two passwords are different',
 };
 
 export const LANG_HU: { [key in keyof typeof LanguageText]: string } = {
@@ -44,4 +52,8 @@ export const LANG_HU: { [key in keyof typeof LanguageText]: string } = {
     Menu_Create: 'LÉTREHOZÁS',
     Menu_Logout: 'KILÉPÉS',
     Success_Login: 'A bejelentkezési folyamat sikeres volt',
+    Requirements_Username: 'Min 5 karakter hosszú és csak kisbetűket és számokat tartalmazhat, szóköz nem megengedett',
+    Requirements_Password: 'Min 6 karakter hosszú és tartalmazhat kis és nagybetűket, számokat, speciális karaktereket, szóköz nem megengedett',
+    Requirements_Email: 'Kérem egy helyes email címet adjon meg',
+    Requirements_Confirm_Password: 'A két jelszómező különböző',
 };
