@@ -11,6 +11,7 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { ShowTicketsComponent } from './tickets/show-tickets/show-tickets.component';
 import { CreateTicketsComponent } from './tickets/create-tickets/create-tickets.component';
 import { PendingComponent } from './pending/pending.component';
+import { DetailTicketComponent } from './tickets/detail-ticket/detail-ticket.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { PendingComponent } from './pending/pending.component';
     ShowTicketsComponent,
     CreateTicketsComponent,
     PendingComponent,
+    DetailTicketComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-show-tickets',
@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./show-tickets.component.scss']
 })
 export class ShowTicketsComponent {
+  @Output() testOut: string = ''
+
+  showWorkDetails(data: string) {
+    this.testOut = data;
+  }
 
 }

@@ -12,7 +12,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr class="detail-row">
+                <tr class="detail-row" (click)="showWorkDetails('test1')">
                     <td>ABC74646</td>
                     <td>Nagy Lajos</td>
                     <td>Laptop</td>
@@ -20,7 +20,7 @@
                     <td>testWorker</td>
                     <td>Folyamatban</td>
                 </tr>
-                <tr class="detail-row">
+                <tr class="detail-row" (click)="showWorkDetails('test2')">
                     <td>CCC78886</td>
                     <td>Nagy Endre</td>
                     <td>PC</td>
@@ -31,7 +31,7 @@
             </tbody>
         </table>
     </div>
-    <div class="work-details">
-
+    <div class=" work-details">
+        <app-detail-ticket [test]="testOut"></app-detail-ticket>
     </div>
 </div>
