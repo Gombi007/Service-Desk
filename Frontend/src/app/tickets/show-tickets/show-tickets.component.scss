@@ -5,8 +5,14 @@
 
 .works {
     width: 70%;
-    margin-top: 0.5rem;
-    padding: 0.3rem;
+    margin: 0.3rem 0 0.3rem 0.3rem;
+}
+
+.work-details {
+    margin: 0.3rem 0.3rem 0.3rem 0;
+    width: 30%;
+    box-shadow: inset 0 0 5px 1px var(--primary-color-hint);
+    border-radius: 0.3rem;
 }
 
 .works table {
@@ -28,11 +34,4 @@
 
 .works table tbody tr:hover * {
     background: var(--primary-color);
-}
-
-
-.work-details {
-    width: 30%;
-    margin-top: 0.5rem;
-    background-color: rgb(16, 47, 184);
 }

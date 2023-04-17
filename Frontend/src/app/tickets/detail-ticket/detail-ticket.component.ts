@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Ticket } from 'src/app/_models/ticket.model';
 
 @Component({
   selector: 'app-detail-ticket',
@@ -6,5 +7,5 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./detail-ticket.component.scss']
 })
 export class DetailTicketComponent {
-  @Input() test: string = '';
+  @Input() _ticket: Ticket | undefined;
 }

@@ -12,7 +12,7 @@
                 </tr>
             </thead>
             <tbody *ngFor="let ticket of tickets">
-                <tr class="detail-row" (click)="showWorkDetails(ticket.id)">
+                <tr class="detail-row" (click)="showWorkDetails(ticket)">
                     <td>{{ticket.id}}</td>
                     <td>{{ticket.owner.fullname}}</td>
                     <td>{{ticket.type}}</td>
@@ -24,6 +24,6 @@
         </table>
     </div>
     <div class=" work-details">
-        <app-detail-ticket [test]="testOut"></app-detail-ticket>
+        <app-detail-ticket [_ticket]="testOut"></app-detail-ticket>
     </div>
 </div>

@@ -12,7 +12,7 @@ import { LanguageService } from 'src/app/_services/language.service';
 export class ShowTicketsComponent {
   lang: { [key: string]: string } = this.languageService.getLanguage;
   langState: { [key: string]: string } = this.languageService.getStateLanguage;
-  testOut: string = ''
+  testOut: Ticket | undefined;
 
   address1: Address = { postcode: '1234', country: 'Hungary', city: 'Budapest', street: 'Fő út 23' };
   address2: Address = { postcode: '1212', country: 'Hungary', city: 'Budapest', street: 'Nagy Ernő út 11' };
@@ -26,8 +26,8 @@ export class ShowTicketsComponent {
   ]
   constructor(private languageService: LanguageService) { }
 
-  showWorkDetails(data: string) {
-    this.testOut = data;
+  showWorkDetails(ticket: Ticket) {
+    this.testOut = ticket;
   }
 
 }
