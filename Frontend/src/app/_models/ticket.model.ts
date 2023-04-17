@@ -1,3 +1,5 @@
+import { State } from "./state.enum";
+
 export interface Ticket {
     id: string;
     owner: string
