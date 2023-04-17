@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { LANG_EN, LANG_HU } from './language.enum';
-import { LANG_EN_STATE, LANG_HU_STATE } from '../_models/state.enum';
+import { LANG_EN_STATE, LANG_HU_STATE } from '../_enums/state.enum';
+import { LANG_EN, LANG_HU } from '../_enums/language.enum';
 
 @Injectable({
   providedIn: 'root'

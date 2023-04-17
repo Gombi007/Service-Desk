@@ -1,10 +1,11 @@
-import { State } from "./state.enum";
+import { Owner } from "./owner.model";
 
 export interface Ticket {
     id: string;
-    owner: string
-    type: string
-    issue: string
-    assigned: string
+    owner: Owner;
+    type: string;
+    issue: string;
+    assigned: string;
     state: string;
+    netCost: number;
 }
