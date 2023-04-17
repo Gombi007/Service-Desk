@@ -11,22 +11,14 @@
                     <th>State</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr class="detail-row" (click)="showWorkDetails('test1')">
-                    <td>ABC74646</td>
-                    <td>Nagy Lajos</td>
-                    <td>Laptop</td>
-                    <td>Törött Kijelző</td>
-                    <td>testWorker</td>
-                    <td>Folyamatban</td>
-                </tr>
-                <tr class="detail-row" (click)="showWorkDetails('test2')">
-                    <td>CCC78886</td>
-                    <td>Nagy Endre</td>
-                    <td>PC</td>
-                    <td>Nem Azonosított</td>
-                    <td>testWorker2</td>
-                    <td>Alkatrészre vár</td>
+            <tbody *ngFor="let ticket of tickets">
+                <tr class="detail-row" (click)="showWorkDetails(ticket.id)">
+                    <td>{{ticket.id}}</td>
+                    <td>{{ticket.owner}}</td>
+                    <td>{{ticket.type}}</td>
+                    <td>{{ticket.issue}}</td>
+                    <td>{{ticket.assigned}}</td>
+                    <td>{{ticket.state}}</td>
                 </tr>
             </tbody>
         </table>
