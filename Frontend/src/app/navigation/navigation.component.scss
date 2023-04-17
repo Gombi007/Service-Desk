@@ -26,6 +26,7 @@ a {
     font-size: larger;
 }
 
-a:hover {
+a:hover,
+.active {
     border-bottom: 2px solid var(--secondary-color);
 }

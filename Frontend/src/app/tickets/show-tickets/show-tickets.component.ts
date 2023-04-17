@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { Ticket } from 'src/app/_models/ticket.model';
 import { LanguageService } from 'src/app/_services/language.service';
 
