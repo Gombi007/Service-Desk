@@ -2,3 +2,37 @@
     height: 95vh;
     display: flex;
 }
+
+.works {
+    width: 70%;
+    margin-top: 0.5rem;
+    padding: 0.3rem;
+}
+
+.works table {
+    width: 100%;
+    cursor: pointer;
+    font-size: large;
+}
+
+.works table th {
+    background: var(--primary-color);
+}
+
+.works table td {
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+    padding-left: 0.3rem;
+    background: var(--primary-color-light);
+}
+
+.works table tbody tr:hover * {
+    background: var(--primary-color);
+}
+
+
+.work-details {
+    width: 30%;
+    margin-top: 0.5rem;
+    background-color: beige;
+}
