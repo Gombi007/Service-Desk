@@ -4,6 +4,7 @@
 }
 
 :root {
+    //colors
     --backgound-color: linear-gradient(to bottom, #2b88a5, #2446a3, #096075);
     --primary-color: linear-gradient(to bottom, #0d485e, rgb(9, 43, 94));
     --primary-color-light: linear-gradient(to bottom, #136d8d, rgb(16, 69, 148));
@@ -14,6 +15,13 @@
     --btn-color-hover: linear-gradient(to bottom, #860e9e, rgb(7, 79, 187));
     --suggestion-color: wheat;
     --success-color: green;
+
+    //sizes
+    --split-content-width-left: 70vw;
+    --split-content-width-right: calc(100vw - var(--split-content-width-left));
+
+    --menu-height: 4vh;
+    --content-height: calc(100vh - var(--menu-height));
 }
 
 html,

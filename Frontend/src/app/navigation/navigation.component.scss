@@ -1,5 +1,5 @@
 .container {
-    height: 5vh;
+    height: var(--menu-height);
     background: var(--primary-color);
     display: flex;
     justify-content: space-between;

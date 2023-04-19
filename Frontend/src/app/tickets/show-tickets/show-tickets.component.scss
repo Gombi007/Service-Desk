@@ -1,16 +1,16 @@
 .container {
-    height: 95vh;
+    height: var(--content-height);
     display: flex;
 }
 
 .works {
-    width: 70%;
+    width: var(--split-content-width-left);
     margin: 0.3rem 0 0.3rem 0.3rem;
 }
 
 .work-details {
     margin: 0.3rem 0.3rem 0.3rem 0;
-    width: 30%;
+    width: var(--split-content-width-right);
     box-shadow: inset 0 0 5px 1px var(--primary-color-hint);
     border-radius: 0.3rem;
 }
