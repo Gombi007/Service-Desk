@@ -1,4 +1,7 @@
 <div class="container" *ngIf="_ticket">
-    <p>{{_ticket.id}}</p>
+    <p>{{_ticket.owner.fullname}} {{_ticket.type}}</p>
     <app-image-viewer [images]="_ticket.pictures"></app-image-viewer>
+    <div class="details">
+
+    </div>
 </div>
