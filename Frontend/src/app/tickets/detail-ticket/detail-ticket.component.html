@@ -1,4 +1,4 @@
-<div class="container" *ngIf="_ticket" #details>
+<div class="container firefox-scrollbar" *ngIf="_ticket" #details>
     <div class="view-controls">
         <p class="title">{{_ticket.owner.fullname}} {{_ticket.type}}</p>
         <img class="fullscreen-icon" src="assets/Pictures/fullscreen.svg" alt="fullscreen-ico" (click)="goFullscreen()"
@@ -6,8 +6,8 @@
         <img class="fullscreen-icon" src="assets/Pictures/close_fullscreen.svg" alt="close-fullscreen-ico"
             (click)="goCompactView()" *ngIf="isFullscreen">
     </div>
-    <app-image-viewer [images]="_ticket.pictures"></app-image-viewer>
     <div class="details">
+        <app-image-viewer [images]="_ticket.pictures"></app-image-viewer>
 
     </div>
 </div>

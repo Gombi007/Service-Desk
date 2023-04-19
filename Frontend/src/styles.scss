@@ -16,7 +16,7 @@
     --suggestion-color: wheat;
     --success-color: green;
     --scrollbar-color-1: rgb(7, 79, 187);
-    --scrollbar-color-2: rgb(3, 37, 87);
+    --scrollbar-color-2: rgb(8, 54, 92);
 
     //sizes
     --split-content-width-left: 70vw;
@@ -118,5 +118,5 @@ input:focus {
 /* Custom scrollbar styles for Firefox */
 .firefox-scrollbar {
     scrollbar-width: thin;
-    scrollbar-color: var(--scrollbar-color-1) var(--scrollbar-color-2);
+    scrollbar-color: var(--scrollbar-color-2) var(--scrollbar-color-1);
 }
