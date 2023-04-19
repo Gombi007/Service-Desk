@@ -7,13 +7,62 @@
 }
 
 .thumbnails {
-    width: 100%;
+    width: 95%;
     display: flex;
     overflow-y: auto;
     gap: 1rem;
-    padding: 0.3rem;
+    padding: 1rem;
 }
 
 .thumbnails img {
     height: 5rem;
+    border-radius: 0.5rem;
+}
+
+.selected-thumbnail {
+    box-sizing: border-box;
+    border: 2px solid var(--primary-color-hint);
+}
+
+.show-picture {
+    width: 100%;
+    padding: 0.3rem;
+}
+
+.show-picture img {
+    width: 100%;
+    border-radius: 0.5rem;
+    transform: scale(0);
+}
+
+.scale-up {
+    animation: show-img 500ms ease-out both;
+}
+
+@keyframes show-img {
+    from {
+        transform: scale(0);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+.scale-down {
+    animation: hide-img 500ms ease-out both;
+}
+
+.scale-down-immediately {
+    animation: hide-img-imm 0ms ease-out both;
+}
+
+@keyframes hide-img {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(0);
+    }
 }

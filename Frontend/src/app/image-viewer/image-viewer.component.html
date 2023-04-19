@@ -1,8 +1,11 @@
 <div class="container">
     <div class="thumbnails firefox-scrollbar">
         <ng-container *ngFor="let image of images; let i = index">
-            <img src="{{image}}" alt="image-{{i}}">
+            <img id="thumbnail-{{i}}" src="{{image}}" alt="thumbnail-{{i}}" (click)="showSelectedPicture(i)"
+                [ngClass]="selectedPic === image ? 'selected-thumbnail':''">
         </ng-container>
     </div>
-    <!-- <img src="{{images[0]}}" alt=""> -->
+    <div class="show-picture" *ngIf="selectedPic">
+        <img #selectedPicRef src="{{selectedPic}}" alt="picture">
+    </div>
 </div>
