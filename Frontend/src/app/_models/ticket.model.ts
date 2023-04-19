@@ -8,4 +8,5 @@ export interface Ticket {
     assigned: string;
     state: string;
     netCost: number;
+    pictures: string[];
 }

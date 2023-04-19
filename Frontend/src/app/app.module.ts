@@ -12,6 +12,7 @@ import { ShowTicketsComponent } from './tickets/show-tickets/show-tickets.compon
 import { CreateTicketsComponent } from './tickets/create-tickets/create-tickets.component';
 import { PendingComponent } from './pending/pending.component';
 import { DetailTicketComponent } from './tickets/detail-ticket/detail-ticket.component';
+import { ImageViewerComponent } from './image-viewer/image-viewer.component';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { DetailTicketComponent } from './tickets/detail-ticket/detail-ticket.com
     CreateTicketsComponent,
     PendingComponent,
     DetailTicketComponent,
+    ImageViewerComponent,
   ],
   imports: [
     BrowserModule,
