@@ -1,1 +1,8 @@
-<p>image-viewer works!</p>
+<div class="container">
+    <div class="thumbnails">
+        <ng-container *ngFor="let image of images; let i = index">
+            <img src="{{image}}" alt="image-{{i}}">
+        </ng-container>
+    </div>
+    <!-- <img src="{{images[0]}}" alt=""> -->
+</div>

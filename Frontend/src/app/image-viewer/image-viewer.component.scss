@@ -1,0 +1,19 @@
+.container {
+    width: calc(var(--split-content-width-right) - 1vw);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.thumbnails {
+    width: 100%;
+    display: flex;
+    overflow-y: auto;
+    gap: 1rem;
+    padding: 0.3rem;
+}
+
+.thumbnails img {
+    height: 5rem;
+}

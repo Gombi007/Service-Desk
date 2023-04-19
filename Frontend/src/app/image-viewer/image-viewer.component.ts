@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-image-viewer',
@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./image-viewer.component.scss']
 })
 export class ImageViewerComponent {
+  @Input() images: string[] = [];
 
 }

@@ -1,3 +1,4 @@
-<div class="container">
-    <p *ngIf="_ticket">{{_ticket.id}}</p>
+<div class="container" *ngIf="_ticket">
+    <p>{{_ticket.id}}</p>
+    <app-image-viewer [images]="_ticket.pictures"></app-image-viewer>
 </div>
