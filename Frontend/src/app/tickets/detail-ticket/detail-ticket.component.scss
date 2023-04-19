@@ -1,7 +1,30 @@
 .container {
     width: 100%;
+    height: calc(var(--content-height) - 0.3rem);
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    overflow: hidden;
+    overflow-y: auto;
+    background: var(--backgound-color);
+
+}
+
+.view-controls {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    height: 2rem;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+}
+
+
+.fullscreen-icon {
+    height: 2rem;
+}
+
+.fullscreen-icon:hover {
+    transform: scale(1.2);
 }

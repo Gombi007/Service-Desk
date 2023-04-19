@@ -7,11 +7,11 @@
 }
 
 .thumbnails {
-    width: 95%;
+    width: 100%;
     display: flex;
     overflow-y: auto;
     gap: 1rem;
-    padding: 1rem;
+    padding: 0.3rem;
 }
 
 .thumbnails img {
@@ -27,11 +27,14 @@
 
 .show-picture {
     width: 100%;
-    padding: 0.3rem;
+    display: flex;
+    justify-content: center;
 }
 
 .show-picture img {
     width: 100%;
+    max-width: 1280px;
+    margin-top: 0.3rem;
     border-radius: 0.5rem;
     transform: scale(0);
 }
