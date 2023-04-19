@@ -1,4 +1,4 @@
-import { AfterViewChecked, Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { AfterViewChecked, Component, ElementRef, Input, QueryList, ViewChild, ViewChildren } from '@angular/core';
 
 @Component({
   selector: 'app-image-viewer',
@@ -8,12 +8,14 @@ import { AfterViewChecked, Component, ElementRef, Input, ViewChild } from '@angu
 export class ImageViewerComponent implements AfterViewChecked {
   @Input() images: string[] = [];
   @ViewChild('selectedPicRef', { read: ElementRef, static: false }) selectedPicRef!: ElementRef;
+  @ViewChildren("thumbnails") thumbnails!: QueryList<ElementRef>;
   selectedPic: string = '';
   isImageUpdated: boolean = false;
 
   constructor() { };
 
   showSelectedPicture(picId: number) {
+    this.thumbnails.toArray()[picId].nativeElement.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
     if (this.selectedPic === this.images[picId]) {
       this.addOrRemoveClassToAnElement(this.selectedPicRef, false);
     }
