@@ -14,13 +14,13 @@ export class DetailTicketComponent {
   constructor(private renderer: Renderer2) { }
 
   goFullscreen() {
-    this.renderer.setStyle(this.details.nativeElement, 'background-color', 'var(--backgound-color)');
+    this.renderer.setStyle(this.details.nativeElement, 'background', 'var(--background-color)');
     document.documentElement.style.setProperty('--split-content-width-left', '0vw');
     this.isFullscreen = true;
   }
 
   goCompactView() {
-    this.renderer.setStyle(this.details.nativeElement, 'background-color', 'var(--backgound-color)');
+    this.renderer.setStyle(this.details.nativeElement, 'background', 'var(--background-color)');
     document.documentElement.style.setProperty('--split-content-width-left', '70vw');
     this.isFullscreen = false;
   }

@@ -1,5 +1,5 @@
 .container {
-    width: calc(var(--split-content-width-right) - 1vw);
+    width: calc(var(--split-content-width-right));
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -12,17 +12,18 @@
     overflow-y: auto;
     gap: 1rem;
     padding: 0.3rem;
+    box-sizing: border-box;
 }
 
 .thumbnails img {
     height: 5rem;
     border-radius: 0.5rem;
+    border: 2px solid transparent;
     cursor: pointer;
 }
 
 .selected-thumbnail {
-    box-sizing: border-box;
-    border: 2px solid var(--primary-color-hint);
+    border-color: var(--primary-color-dark) !important;
 }
 
 .show-picture {

@@ -5,16 +5,15 @@
 
 :root {
     //colors
-    --backgound-color: linear-gradient(to bottom, #2b88a5, #2446a3, #096075);
+    --background-color: linear-gradient(to bottom, #2b88a5, #2446a3, #096075);
     --primary-color: linear-gradient(to bottom, #0d485e, rgb(9, 43, 94));
-    --primary-color-light: linear-gradient(to bottom, #136d8d, rgb(16, 69, 148));
-    --primary-color-hint: rgb(2, 20, 70);
-    --secondary-color: #ffffff;
-    --input-color: rgb(0, 24, 54);
+    --primary-color-dark: rgb(7, 33, 73);
+    --primary-color-light: rgb(16, 79, 173);
+    --primary-color-text: #ffffff;
+    --warn-color: wheat;
+    --success-color: green;
     --btn-color-default: linear-gradient(to bottom, #098ab9, rgb(7, 79, 187));
     --btn-color-hover: linear-gradient(to bottom, #860e9e, rgb(7, 79, 187));
-    --suggestion-color: wheat;
-    --success-color: green;
     --scrollbar-color-1: rgb(7, 79, 187);
     --scrollbar-color-2: rgb(8, 54, 92);
 
@@ -33,8 +32,8 @@ body {
 }
 
 body {
-    color: var(--secondary-color);
-    background: var(--backgound-color);
+    color: var(--primary-color-text);
+    background: var(--background-color);
     font-family: 'Courier';
 }
 
@@ -68,8 +67,8 @@ input {
     border-radius: 0.3rem;
     font-size: large;
     border: none;
-    background-color: var(--input-color);
-    color: var(--secondary-color);
+    background: var(--primary-color-dark);
+    color: var(--primary-color-text);
 }
 
 input:focus {
