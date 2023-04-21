@@ -3,22 +3,22 @@
         <table>
             <thead>
                 <tr>
-                    <th>{{lang['Table_Label_Id']}}</th>
-                    <th>{{lang['Table_Label_Owner']}}</th>
-                    <th>{{lang['Table_Label_Type']}}</th>
-                    <th>{{lang['Table_Label_Issue']}}</th>
-                    <th>{{lang['Table_Label_Assigned']}}</th>
-                    <th>{{lang['Table_Label_Sate']}}</th>
+                    <th class="truncate">{{lang['Table_Label_Id']}}</th>
+                    <th class="truncate">{{lang['Table_Label_Owner']}}</th>
+                    <th class="truncate">{{lang['Table_Label_Type']}}</th>
+                    <th class="truncate">{{lang['Table_Label_Issue']}}</th>
+                    <th class="truncate">{{lang['Table_Label_Assigned']}}</th>
+                    <th class="truncate">{{lang['Table_Label_Sate']}}</th>
                 </tr>
             </thead>
-            <tbody *ngFor="let ticket of tickets">
+            <tbody *ngFor=" let ticket of tickets">
                 <tr class="detail-row" (click)="showWorkDetails(ticket)">
-                    <td>{{ticket.id}}</td>
-                    <td>{{ticket.owner.fullname}}</td>
-                    <td>{{ticket.type}}</td>
-                    <td>{{ticket.issue}}</td>
-                    <td>{{ticket.assigned}}</td>
-                    <td>{{ticket.state}}</td>
+                    <td class="truncate">{{ticket.id}}</td>
+                    <td class="truncate">{{ticket.owner.fullname}}</td>
+                    <td class="truncate">{{ticket.type}}</td>
+                    <td class="truncate">{{ticket.issue}}</td>
+                    <td class="truncate">{{ticket.assigned}}</td>
+                    <td class="truncate">{{ticket.state}}</td>
                 </tr>
             </tbody>
         </table>

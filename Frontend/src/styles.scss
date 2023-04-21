@@ -29,12 +29,13 @@ html,
 body {
     margin: 0;
     padding: 0;
-}
-
-body {
-    color: var(--primary-color-text);
     background: var(--background-color);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: var(--primary-color-text);
     font-family: 'Courier';
+    overflow-x: hidden;
 }
 
 a {
@@ -118,4 +119,14 @@ input:focus {
 .firefox-scrollbar {
     scrollbar-width: thin;
     scrollbar-color: var(--scrollbar-color-2) var(--scrollbar-color-1);
+}
+
+.truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    /* Hide text that overflows the container */
+    text-overflow: ellipsis;
+    /* Show ellipsis (...) when text overflows */
+    max-width: 5ch;
+    /* Limit the text length to 5 characters */
 }
