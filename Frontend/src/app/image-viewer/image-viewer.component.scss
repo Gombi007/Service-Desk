@@ -4,6 +4,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
 
 .thumbnails {
@@ -27,7 +28,7 @@
 }
 
 .show-picture {
-    width: 100%;
+    max-width: 100%;
     display: flex;
     justify-content: center;
 }
@@ -69,5 +70,15 @@
 
     to {
         transform: scale(0);
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .container {
+        width: 100vw;
+    }
+
+    .thumbnails {
+        width: 100vw;
     }
 }

@@ -1,4 +1,4 @@
 .container {
-    height: 95vh;
+    height: var(--content-height);
     display: flex;
 }

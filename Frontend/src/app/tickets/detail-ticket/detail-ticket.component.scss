@@ -6,13 +6,11 @@
     align-items: center;
     overflow: hidden;
     overflow-y: auto;
-    background: var(--backgound-color);
-
 }
 
 .view-controls {
     width: 100%;
-    height: 2rem;
+    height: 2.5rem;
     position: sticky;
     top: 0;
     display: flex;
@@ -33,10 +31,33 @@
     height: 2rem;
 }
 
+.icons {
+    background: var(--primary-color-text);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+
 .fullscreen-icon:hover {
     transform: scale(1.2);
 }
 
 .detials {
     top: 3rem;
+}
+
+@media only screen and (max-width: 1000px) {
+    .icons {
+        display: none;
+    }
+
+    .container {
+        overflow: hidden;
+        height: 100%;
+    }
+
+    .view-controls {
+        justify-content: center;
+    }
 }
