@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { LANG_EN, LANG_HU } from 'src/app/_services/language.enum';
+import { LANG_EN, LANG_HU } from 'src/app/_enums/language.enum';
 import { LanguageService } from 'src/app/_services/language.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthenticateService } from 'src/app/_services/authenticate.service';

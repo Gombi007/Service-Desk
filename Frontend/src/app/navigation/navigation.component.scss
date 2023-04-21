@@ -1,10 +1,10 @@
 .container {
-    height: 5vh;
+    height: var(--menu-height);
     background: var(--primary-color);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 0 3px 3px var(--primary-color-hint);
+    box-shadow: 0 0 3px 3px var(--primary-color-dark);
 
 }
 
@@ -21,11 +21,12 @@
 }
 
 a {
-    color: var(--secondary-color);
+    color: var(--primary-color-text);
     border-bottom: 2px solid transparent;
     font-size: larger;
 }
 
-a:hover {
-    border-bottom: 2px solid var(--secondary-color);
+a:hover,
+.active {
+    border-bottom: 2px solid var(--primary-color-text);
 }

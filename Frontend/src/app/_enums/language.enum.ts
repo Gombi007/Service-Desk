@@ -16,6 +16,12 @@ export enum LanguageText {
     Requirements_Password = 'Min 6 char length and contains only lower or uppercase letters and digits and special chars, whitespace not allowed',
     Requirements_Email = 'Please give a valid email format',
     Requirements_Confirm_Password = 'The two passwords are different',
+    Table_Label_Id = 'Id',
+    Table_Label_Owner = 'Owner',
+    Table_Label_Type = 'Type',
+    Table_Label_Issue = 'Issue',
+    Table_Label_Assigned = 'Assigned',
+    Table_Label_Sate = 'State',
 }
 
 export const LANG_EN: { [key in keyof typeof LanguageText]: string } = {
@@ -36,6 +42,12 @@ export const LANG_EN: { [key in keyof typeof LanguageText]: string } = {
     Requirements_Password: 'Min 6 char length and contains only lower or uppercase letters and digits and special chars, whitespace not allowed',
     Requirements_Email: 'Please give a valid email format',
     Requirements_Confirm_Password: 'The two passwords are different',
+    Table_Label_Id: 'Id',
+    Table_Label_Owner: 'Owner',
+    Table_Label_Type: 'Type',
+    Table_Label_Issue: 'Issue',
+    Table_Label_Assigned: 'Assigned',
+    Table_Label_Sate: 'State',
 };
 
 export const LANG_HU: { [key in keyof typeof LanguageText]: string } = {
@@ -56,4 +68,10 @@ export const LANG_HU: { [key in keyof typeof LanguageText]: string } = {
     Requirements_Password: 'Min 6 karakter hosszú és tartalmazhat kis és nagybetűket, számokat, speciális karaktereket, szóköz nem megengedett',
     Requirements_Email: 'Kérem egy helyes email címet adjon meg',
     Requirements_Confirm_Password: 'A két jelszómező különböző',
+    Table_Label_Id: 'Azonosító',
+    Table_Label_Owner: 'Tulajdonos',
+    Table_Label_Type: 'Típus',
+    Table_Label_Issue: 'Hiba',
+    Table_Label_Assigned: 'Hozzárendelve',
+    Table_Label_Sate: 'Állapot',
 };

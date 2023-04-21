@@ -1,4 +1,52 @@
 .container {
-    height: 95vh;
+    height: var(--content-height);
     display: flex;
+}
+
+.works {
+    width: var(--split-content-width-left);
+    margin-top: 0.3rem;
+}
+
+.work-details {
+    margin-top: 0.3rem;
+    width: var(--split-content-width-right);
+    border-radius: 0.3rem;
+}
+
+.works table {
+    width: 100%;
+    cursor: pointer;
+    font-size: large;
+}
+
+.works table th {
+    background: var(--primary-color);
+}
+
+.works table td {
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+    padding-left: 0.3rem;
+    background: var(--primary-color-light);
+}
+
+.works table tbody tr:hover * {
+    background: var(--primary-color);
+}
+
+@media only screen and (max-width: 1000px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .works {
+        width: 100%;
+
+    }
+
+    .work-details {
+        width: 100%;
+
+    }
 }

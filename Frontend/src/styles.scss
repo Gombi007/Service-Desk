@@ -4,27 +4,38 @@
 }
 
 :root {
-    --backgound-color: linear-gradient(to bottom, #2b88a5, #2446a3, #096075);
+    //colors
+    --background-color: linear-gradient(to bottom, #2b88a5, #2446a3, #096075);
     --primary-color: linear-gradient(to bottom, #0d485e, rgb(9, 43, 94));
-    --primary-color-hint: rgb(2, 20, 70);
-    --secondary-color: #ffffff;
-    --input-color: rgb(0, 24, 54);
+    --primary-color-dark: rgb(7, 33, 73);
+    --primary-color-light: rgb(16, 79, 173);
+    --primary-color-text: #ffffff;
+    --warn-color: wheat;
+    --success-color: green;
     --btn-color-default: linear-gradient(to bottom, #098ab9, rgb(7, 79, 187));
     --btn-color-hover: linear-gradient(to bottom, #860e9e, rgb(7, 79, 187));
-    --suggestion-color: wheat;
-    --success-color: green;
+    --scrollbar-color-1: rgb(7, 79, 187);
+    --scrollbar-color-2: rgb(8, 54, 92);
+
+    //sizes
+    --split-content-width-left: 70vw;
+    --split-content-width-right: calc(100vw - var(--split-content-width-left));
+
+    --menu-height: 4vh;
+    --content-height: calc(100vh - var(--menu-height));
 }
 
 html,
 body {
     margin: 0;
     padding: 0;
-}
-
-body {
-    color: var(--secondary-color);
-    background: var(--backgound-color);
+    background: var(--background-color);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: var(--primary-color-text);
     font-family: 'Courier';
+    overflow-x: hidden;
 }
 
 a {
@@ -57,8 +68,8 @@ input {
     border-radius: 0.3rem;
     font-size: large;
     border: none;
-    background-color: var(--input-color);
-    color: var(--secondary-color);
+    background: var(--primary-color-dark);
+    color: var(--primary-color-text);
 }
 
 input:focus {
@@ -86,4 +97,36 @@ input:focus {
     right: 0;
     padding: 0.5rem;
     position: fixed;
+}
+
+/* Use the same styles as for Chrome */
+::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px var(--scrollbar-color-1);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-color-2);
+    border-radius: 5px;
+}
+
+/* Custom scrollbar styles for Firefox */
+.firefox-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-color-2) var(--scrollbar-color-1);
+}
+
+.truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    /* Hide text that overflows the container */
+    text-overflow: ellipsis;
+    /* Show ellipsis (...) when text overflows */
+    max-width: 5ch;
+    /* Limit the text length to 5 characters */
 }

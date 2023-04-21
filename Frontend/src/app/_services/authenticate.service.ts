@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Constans } from './constans.enum';
+import { Constans } from '../_enums/constans.enum';
 
 @Injectable({
   providedIn: 'root'
